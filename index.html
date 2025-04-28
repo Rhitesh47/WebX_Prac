@@ -1,0 +1,37 @@
+<!-- Aim - create a basic HTML page and integrate the tracking code into it.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Page with Tracking</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is a basic HTML page with a tracking code integrated.</p>
+
+    <!-- Tracking Code -->
+    <script>
+        (function() {
+            console.log("Tracking script loaded.");
+
+            // Example: Simple page view tracking
+            fetch('https://www.googletagmanager.com/gtag/js?id=G-QCX3G9KSPC', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    event: 'page_view',
+                    timestamp: new Date().toISOString()
+                })
+            }).then(response => {
+                console.log('Tracking event sent.', response);
+            }).catch(error => {
+                console.error('Error sending tracking event.', error);
+            });
+        })();
+    </script>
+
+</body>
+</html>
